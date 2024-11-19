@@ -1,0 +1,52 @@
+<odoo>
+    <record id="project_task_kanban_view" model="ir.ui.view">
+        <field name="name">project.task.kanban</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_task">
+                                <strong>
+                                    <field name="name"/>
+
+                                </strong>
+                                <div>
+                                    <field name="project_id"/>
+                                </div>
+                                <div>
+                                    <field name="status"/>
+                                </div>
+                                <div>
+                                    <field name="priority" widget="priority"/>
+                                </div>
+                                <div style="padding_right: 50px;">
+                                    <field name="progress" widget="percentpie" />
+
+                                </div>
+                                <div class="o_kanban_avatar">
+                                    <field name="assigned_to" widget="many2one_avatar_user" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_project_task_kanban" model="ir.actions.act_window">
+        <field name="name">Task Dashboard</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="project_task_kanban_view"/>
+    </record>
+
+    <menuitem
+            id="task_dashboard_menu"
+            name="Task Dashboard"
+            parent="menu_project_management"
+            action="action_project_task_kanban"
+            sequence="3"/>
+</odoo>
