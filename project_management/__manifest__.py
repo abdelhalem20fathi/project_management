@@ -16,6 +16,11 @@
         'reports/project_performance_report.xml',
         'data/cron.xml',
     ],
+    'assets': {
+            'web.assets_backend': [
+                '/project_management/static/src/css/styles.css',
+            ],
+        },
     'installable': True,
     'application': True,
 }
